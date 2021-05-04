@@ -106,19 +106,19 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function roundMe(x){ 
-  if(341 < x && x < 437){
+  if(31< x && x < 131){
     return 0;
-  } else if(452 < x && x < 550){
+  } else if(139 < x && x < 239){
     return 1;
-  } else if(561 < x && x < 659){
+  } else if(247 < x && x < 347){
     return 2;
-  } else if(671 < x && x < 767){
+  } else if(355 < x && x < 455){
     return 3;
-  } else if(780 < x && x < 880){
+  } else if(463 < x && x < 563){
     return 4;
-  } else if(891 < x && x < 987){
+  } else if(571 < x && x < 671){
     return 5;
-  } else if(1001 < x && x < 1100){
+  } else if(679 < x && x < 779){
     return 6;
   }
 }
