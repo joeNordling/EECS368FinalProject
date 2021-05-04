@@ -4,7 +4,9 @@ let t = 0;
 let i = 0;
 let model = {
   board: "......./......./......./......./......./....../.......",
+  next: "X",
 }
+
 
 function tick() {
   window.requestAnimationFrame(splat);
@@ -57,7 +59,21 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function roundMe(x){ 
-  return Math.ceil((x-20)/120)-1 
+  if(87 < x && x < 184){
+    return 1;
+  } else if(197 < x && x < 293){
+    return 2;
+  } else if(306 < x && x < 402){
+    return 3;
+  } else if(416 < x && x < 512){
+    return 4;
+  } else if(525 < x && x < 621){
+    return 5;
+  } else if(635 < x && x < 735){
+    return 6;
+  } else if(746 < x && x < 842){
+    return 7;
+  }
 }
 
 document.addEventListener("click", e => {
