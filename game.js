@@ -2,10 +2,8 @@ let canvas;
 let context;
 let t = 0;
 let i = 0;
-let model = {
-  board: "......./......./......./......./......./....../.......",
-  next: "X",
-}
+var next = "red";
+var board = [[],[],[],[],[],[],[]];
 
 
 function tick() {
@@ -27,6 +25,15 @@ function splat(n) {
       context.arc((70+i*110), (70+j*110), 50, 0, 2 * Math.PI);
       context.stroke();
       context.fillStyle = "white";
+      context.fill();
+    }
+  }
+  for(let i = 0; i < board.length; i++){
+    for(let j = 0; j < board[i].length; j++){
+      context.beginPath();
+      context.arc((70+i*110), (70+j*110), 50, 0, 2 * Math.PI);
+      context.stroke();
+      context.fillStyle = board[i][j];
       context.fill();
     }
   }
@@ -60,42 +67,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function roundMe(x){ 
   if(87 < x && x < 184){
-    return 1;
+    return 0;
   } else if(197 < x && x < 293){
-    return 2;
+    return 1;
   } else if(306 < x && x < 402){
-    return 3;
+    return 2;
   } else if(416 < x && x < 512){
-    return 4;
+    return 3;
   } else if(525 < x && x < 621){
-    return 5;
+    return 4;
   } else if(635 < x && x < 735){
-    return 6;
+    return 5;
   } else if(746 < x && x < 842){
-    return 7;
+    return 6;
   }
 }
 
 document.addEventListener("click", e => {
-  console.log(e.x, e.y);
-  const [i,j] = [e.x,e.y].map(roundMe);
-  if (i < 0 || i > 2) return;
-  if (j < 0 || j > 2) return;
+  const i = roundMe(e.x);
 
-  const ix = i + j * 4;
-  if (model.board.charAt(ix) != '.') {
-    return;
+  if (board[i] != undefined ) {
+    if(board[i].length > 5){
+      return ;
+    }
   }
-//  console.log(i,j,ix)
-  model.board =
-    model.board.slice(0,ix) +
-    model.next +
-    model.board.slice(ix+1,15)
-
-  if (model.next == 'X') {
-    model.next = 'O'
-  } else if (model.next == 'O') {
-    model.next = 'X'
+  console.log(i);
+  board[i] = board[i].concat([next]);
+  console.log(board[i]);
+  if (next == "red") {
+    next = "yellow";
+  } else if (next == "yellow") {
+    next = "red";
   }
   
   
